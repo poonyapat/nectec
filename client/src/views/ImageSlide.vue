@@ -12,7 +12,6 @@
                 @sliding-start="onSlideStart"
                 @sliding-end="onSlideEnd"
         >
-
             <b-carousel-slide caption="First slide"
                                 text="Nulla vitae elit libero, a pharetra augue mollis interdum."
                                 img-src="https://picsum.photos/1024/480/?image=52"
@@ -31,6 +30,11 @@
             </b-carousel-slide>
 
             <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
+                <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                eros felis, tincidunt a tincidunt eget, convallis vel est. Ut pellentesque
+                ut lacus vel interdum.
+                </p>
             </b-carousel-slide>
 
         </b-carousel>
@@ -38,7 +42,7 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue from 'vue'
 import bCarousel from 'bootstrap-vue/es/components/carousel/carousel';
 Vue.component('b-carousel', bCarousel);
 export default {

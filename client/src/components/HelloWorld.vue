@@ -1,10 +1,8 @@
 <template>
-  <ImageSlide/>
 </template>
 
 <script>
 import TestService from '@/services/testService'
-import ImageSlide from '@/views/ImageSlide.vue'
 export default {
   name: 'HelloWorld',
   props: {
