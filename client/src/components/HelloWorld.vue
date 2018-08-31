@@ -1,12 +1,10 @@
 <template>
-  <div class="hello">
-    <h1>{{ info }}</h1>
-    <v-btn dark class="">hello</v-btn>
-  </div>
+  <ImageSlide/>
 </template>
 
 <script>
 import TestService from '@/services/testService'
+import ImageSlide from '@/views/ImageSlide.vue'
 export default {
   name: 'HelloWorld',
   props: {
