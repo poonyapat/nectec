@@ -106,6 +106,8 @@ module.exports = {
                 results.push({ id: archilogicalSiteData[data][index].id, title: archilogicalSiteData[data][index].title, media: archilogicalSiteData[data][index].media })
             }
         }
+        results = results.sort(function(a,b) {return (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0);} );
+
 
         res.send(results)
     },
