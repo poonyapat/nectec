@@ -13,7 +13,7 @@
               <b-nav-item href="#">Content</b-nav-item>
             </b-navbar-nav>
             <b-navbar-nav>
-              <b-nav-item href="#">เบอร์ฉุกเฉิน</b-nav-item>
+              <router-link to="tel">เบอร์ฉุกเฉิน</router-link>
             </b-navbar-nav>
 
             <!-- Right aligned nav items -->
@@ -83,13 +83,11 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Kanit');
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Kanit', 'Roboto', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  // text-align: center;
   color: #2c3e50;
 }
 #nav {

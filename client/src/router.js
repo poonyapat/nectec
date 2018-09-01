@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Content from '@/components/Content.vue'
+import Tel from '@/views/Tel.vue'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/content/:id',
       name: 'content',
       component: Content
+    },
+    {
+      path: '/tel',
+      name: 'tel',
+      component: Tel
     }
   ]
 })
