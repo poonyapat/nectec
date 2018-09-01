@@ -6,6 +6,8 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import colors from 'vuetify/es5/util/colors'
 import { sync } from 'vuex-router-sync'
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'mdbvue/build/css/mdb.css';
 
 Vue.config.productionTip = false
 
