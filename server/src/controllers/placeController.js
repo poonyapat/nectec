@@ -31,10 +31,6 @@ module.exports = {
             console.log(hilights)
             res.send(hilights)
         })
-            // hilights = hilights.slice(0, 10)
-            // places.hilights = hilights
-        //     res.send(hilights)
-        // }).catch ((error) => res.status(400).send(error))
 
     },
     async get (req, res) {
