@@ -34,38 +34,57 @@ async function find (params) {
     return data.data.data
 }
 
-
+archiologicalSite= {
+    east: [],
+    north: [],
+    central: [],
+    south: [],
+    westL: [],
+    northEast: []
+},
 module.exports = {
-    archiologicalSite: {},
-    async load(){
-        await find({
+    load(){
+        // archiologicalSite = {
+        //     east: [],
+        //     north: [],
+        //     central: [],
+        //     south: [],
+        //     westL: [],
+        //     northEast: []
+        // }
+        find({
             dsname: 'vir_225_1533289131',
             path: 'vir_225_1533289131'
         }).then(a => {
-            this.archiologicalSite.east = a
+            archiologicalSite.east = a
+            find({
+                dsname: 'vir_228',
+                path: 'vir_228'
+            }).then(a => {archiologicalSite.central = a
+                find({
+                    dsname: 'vir_224',
+                    path: 'vir_224'
+                }).then(a => {archiologicalSite.south = a
+                    find({
+                        dsname: 'vir_229',
+                        path: 'vir_229'
+                    }).then(a => {archiologicalSite.west = a
+                        find({
+                            dsname: 'vir_231',
+                            path: 'vir_231'
+                        }).then(a => {archiologicalSite.north = a
+                            find({
+                                dsname: 'vir_232',
+                                path: 'vir_232',
+                            }).then(a => {archiologicalSite.northEast = a})
+                        })
+                    })
+                })
+            })
         })
-        await find({
-            dsname: 'vir_228',
-            path: 'vir_228'
-        }).then(a => this.archiologicalSite.central = a)
-        await find({
-            dsname: 'vir_224',
-            path: 'vir_224'
-        }).then(a => this.archiologicalSite.south = a)
-        await find({
-            dsname: 'vir_229',
-            path: 'vir_229'
-        }).then(a => this.archiologicalSite.west = a)
-        await find({
-            dsname: 'vir_231',
-            path: 'vir_231'
-        }).then(a => this.archiologicalSite.north = a)
-        await find({
-            dsname: 'vir_232',
-            path: 'vir_232',
-        }).then(a => {this.archiologicalSite.northEast = a;console.log(this.archiologicalSite)})
     },
     getArchiologicalSite(req, res){
-        res.send(this.archiologicalSite)
+        console.log(archiologicalSite)
+        res.send(archiologicalSite)
     }
 }
