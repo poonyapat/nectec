@@ -15,6 +15,7 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
+    "fast-csv": "^2.4.1",
     "google-trends-api": "^4.7.0",
     "joi": "^13.6.0",
     "mongoose": "^5.2.12",
