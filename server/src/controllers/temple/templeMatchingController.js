@@ -17,6 +17,7 @@ const regionData = [central, east, north_east, north, south, west]
 templeData = []
 module.exports = {
     generateCompletedTempleData(csvData){
+
         templeData = []
         for (let i = 0; i < csvData.length; i++){
             let amphoe = csvData[i][2].match('อำเภอ[^ ]+') || csvData[i][2].match('เขต[^ ]+')
@@ -34,7 +35,7 @@ module.exports = {
                     if (regionData[j][k].title === title && regionData[j][k].province === csvData[i][7]){
                         let region
                         switch(j){
-                            case 0: region = 'ภาคกลาง' 
+                            case 0: region = 'ภาคกลาง'
                                 break
                             case 1: region = 'ภาคตะวันออก'
                                 break
@@ -46,6 +47,7 @@ module.exports = {
                                 break
                             case 5: region = 'ภาคตะวันตก'
                         }
+
                         templeData.push({
                             id: regionData[j][k].id,
                             title: regionData[j][k].title,
@@ -138,7 +140,7 @@ module.exports = {
                             })
                         }
                     }
-                    break 
+                    break
                 case 'ภาคตะวันตก':
                     for (let j = 0; j < media.west.length; j++){
                         if (templeData[i].id === media.west[j][0]){
@@ -151,12 +153,12 @@ module.exports = {
                             })
                         }
                     }
-                    break 
+                    break
             }
         }
     },
 
-    getTempleData(req, res){
-        res.send(templeData)
+    getTempleData(){
+        return templeData
     }
 }

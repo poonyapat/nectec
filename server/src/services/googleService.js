@@ -13,7 +13,7 @@ module.exports = {
             const searchResults = (JSON.parse(results)).default.rankedList[0].rankedKeyword
             var topics = []
             for (let index in searchResults) {
-                topics = searchResults[index].topic.title
+                topics.push(searchResults[index].topic.title)
             }
             return topics
         } catch (err) {
@@ -21,6 +21,7 @@ module.exports = {
                 error: 'Unable to fetch data from Google API'
             })
         }
+
     },
     async getHotelsAndRestaurant (req, res) {
         try {
