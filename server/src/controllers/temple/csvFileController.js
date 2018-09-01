@@ -28,47 +28,47 @@ module.exports = {
                 callback(this.templeData)
         })
     },
-    // loadTempleMedia(callback){
-    //     this.media = {
-    //         central: [],
-    //         north: [],
-    //         east: [],
-    //         northEast: [],
-    //         south: [],
-    //         west: []
-    //     }
-    //     fs.createReadStream('src/assets/multimedia/central_media.csv')
-    //         .pipe(csv())
-    //         .on('data', data => {
-    //             this.media.central.push(data)
-    //         }).on('end', data => console.log("Complete loaded central media"))
-    //     fs.createReadStream('src/assets/multimedia/east_media.csv')
-    //         .pipe(csv())
-    //         .on('data', data => {
-    //             this.media.east.push(data)
-    //         }).on('end', data => console.log("Complete loaded east media"))
-    //     fs.createReadStream('src/assets/multimedia/north_media.csv')
-    //         .pipe(csv())
-    //         .on('data', data => {
-    //             this.media.north.push(data)
-    //         }).on('end', data => console.log("Complete loaded north media"))
-    //     fs.createReadStream('src/assets/multimedia/northeast_media.csv')
-    //         .pipe(csv())
-    //         .on('data', data => {
-    //             this.media.northEast.push(data)
-    //         }).on('end', data => console.log("Complete loaded north east media"))
-    //     fs.createReadStream('src/assets/multimedia/south_media.csv')
-    //         .pipe(csv())
-    //         .on('data', data => {
-    //             this.media.south.push(data)
-    //         }).on('end', data => console.log("Complete loaded south media"))
-    //     fs.createReadStream('src/assets/multimedia/west_media.csv')
-    //         .pipe(csv())
-    //         .on('data', data => {
-    //             this.media.west.push(data)
-    //         }).on('end', data => {
-    //             console.log("Complete loaded west media")
-    //             callback()
-    //         })
-    // }
+    loadTempleMedia(callback){
+        this.media = {
+            central: [],
+            north: [],
+            east: [],
+            northEast: [],
+            south: [],
+            west: []
+        }
+        fs.createReadStream('src/assets/multimedia/central_media.csv')
+            .pipe(csv())
+            .on('data', data => {
+                this.media.central.push(data)
+            }).on('end', data => console.log("Complete loaded central media"))
+        fs.createReadStream('src/assets/multimedia/east_media.csv')
+            .pipe(csv())
+            .on('data', data => {
+                this.media.east.push(data)
+            }).on('end', data => console.log("Complete loaded east media"))
+        fs.createReadStream('src/assets/multimedia/north_media.csv')
+            .pipe(csv())
+            .on('data', data => {
+                this.media.north.push(data)
+            }).on('end', data => console.log("Complete loaded north media"))
+        fs.createReadStream('src/assets/multimedia/northeast_media.csv')
+            .pipe(csv())
+            .on('data', data => {
+                this.media.northEast.push(data)
+            }).on('end', data => console.log("Complete loaded north east media"))
+        fs.createReadStream('src/assets/multimedia/south_media.csv')
+            .pipe(csv())
+            .on('data', data => {
+                this.media.south.push(data)
+            }).on('end', data => console.log("Complete loaded south media"))
+        fs.createReadStream('src/assets/multimedia/west_media.csv')
+            .pipe(csv())
+            .on('data', data => {
+                this.media.west.push(data)
+            }).on('end', data => {
+                console.log("Complete loaded west media")
+                callback()
+            })
+    }
 }
