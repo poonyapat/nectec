@@ -2,8 +2,6 @@
 const TempleMatchingController = require('./controllers/temple/templeMatchingController')
 const ArchiologicalSiteController = require('./controllers/archiologicalSiteController')
 const ModelController = require('./controllers/modelController')
-
-const ModelController = require('./controllers/modelController')
 module.exports = (app) => {
     app.get('/temple', TempleMatchingController.getTempleData)
     app.get('/archiology', ArchiologicalSiteController.getArchiologicalSite)
