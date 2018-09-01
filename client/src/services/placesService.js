@@ -6,7 +6,7 @@ export default {
     return Api().get('')
   },
   show () {
-    return Api().get()
+    return Api().get('list')
   },
   getContent(id){
     return Api().get(`content/${id}`)
