@@ -67,12 +67,15 @@
       </div>
       <div class="container">
         <div class="row">
-          <card-content class="col-3" v-for="(item, index) in hilights" v-if="index < 4" 
-            :key="item.id"
-            :id="item.id"
-            :img="!item.media ? '' : item.media[0].bigPic"
-            :txt="item.title"
-          />
+          <template  class="col-3" v-for="(item, index) in $store.state.hilights" v-if="index < 4">
+            {{item.id}}  {{ item.media.length}}  
+            <card-content
+              :key="item.id"
+              :id="item.id"
+              :img="!item.media ? '' : item.media[0].bigPic"
+              :txt="item.title"
+            />
+          </template>
         </div>
       </div>
     </div>
