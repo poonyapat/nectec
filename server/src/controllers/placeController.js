@@ -1,18 +1,23 @@
 const GoogleService = require('../services/googleService')
+const TempleMatchingController = require('./controllers/temple/templeMatchingController')
 
 
 module.exports = {
-    async index (req, res) {
+    index (req, res) {
         try {
-            const model = await Temple3D.findOne({ title: req.params.id })
-            res.send(model)
-        } catch (err) {
-            res.status(500).send({
-                error: 'Unable to fetch data from DB'
-            })
+
+        } catch (error) {
+
         }
     },
     async get (req, res) {
+        try {
+
+        } catch (error) {
+
+        }
+    },
+    async search (req, res) {
         try {
 
         } catch (error) {
