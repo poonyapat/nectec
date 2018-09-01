@@ -67,6 +67,10 @@ Vue.component('b-carousel', bCarousel);
 // @ is an alias to /src
 
 export default {
+  name: 'home',
+  components: {
+      GoogleMap
+    },
   methods: {
     onSlideStart (slide) {
       this.sliding = true
@@ -75,10 +79,7 @@ export default {
       this.sliding = false
     },
 
-    name: 'home',
-    components: {
-      GoogleMap
-    }
+    
   }
 }
 </script>
