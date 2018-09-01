@@ -7,5 +7,8 @@ module.exports = (app) => {
 
     app.get('/content/:id', PlaceController.get)
 
+    app.get('/list', PlaceController.show)
+
     app.get('/content/:id/model', ModelController.index)
+
 }

@@ -1,5 +1,4 @@
 const googleTrends = require('google-trends-api')
-const axios = require('axios')
 
 module.exports = {
     async getTrends (req, res) {

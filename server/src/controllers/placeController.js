@@ -37,10 +37,11 @@ module.exports = {
                 {id: 'MOC-39463', title: "วัดศรีชุม", media: []}
             ]
 
-            for (let data in templeData) {
-                for (let i=0; i < temples.length; i++) {
+
+            for (let i = 0; i < temples.length; i++) {
+                for (let data in templeData) {
                     if (temples[i].id === templeData[data].id) {
-                        temples[i] = templeData[data].media
+                        temples[i].media = templeData[data].media
                     }
                 }
             }
@@ -53,7 +54,6 @@ module.exports = {
     async get (req, res) {
         let foundObject = {}
         for (let data in templeData) {
-            console.log(templeData[data].id)
             if (templeData[data].id === req.params.id) {
                 foundObject = templeData[data]
                 break
@@ -63,7 +63,6 @@ module.exports = {
             for (let data in archilogicalSiteData) {
                 for (let index in archilogicalSiteData[data]) {
                     if (archilogicalSiteData[data][index].id === req.params.id) {
-                        console.log(typeof(archilogicalSiteData[data][index]))
                         foundObject = archilogicalSiteData[data][index]
                         break
                     }
@@ -97,11 +96,17 @@ module.exports = {
             })
         }
     },
-    async search (req, res) {
-        try {
-
-        } catch (error) {
-
+    show (req, res) {
+        let results = []
+        for (let data in templeData) {
+            results.push({ id: templeData[data].id, title: templeData[data].title, media: templeData[data].media })
         }
+        for (let data in archilogicalSiteData) {
+            for (let index in archilogicalSiteData[data]) {
+                results.push({ id: archilogicalSiteData[data][index].id, title: archilogicalSiteData[data][index].title, media: archilogicalSiteData[data][index].media })
+            }
+        }
+
+        res.send(results)
     }
 }
