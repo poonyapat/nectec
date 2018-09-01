@@ -75,8 +75,8 @@ module.exports = {
             })
         })
     },
-    getArchiologicalSite(req, res){
+    getArchiologicalSite(){
         console.log(archiologicalSite)
-        res.send(archiologicalSite)
+        return archiologicalSite
     }
 }
