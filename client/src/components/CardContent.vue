@@ -1,5 +1,5 @@
 <template>
-    <router-link to="`content/${id}`">
+    <!-- <router-link :to="{ name: 'content'}"> -->
         <div>
             <v-hover>
                 <v-card
@@ -25,13 +25,20 @@
                 </v-card>
             </v-hover>
         </div>
-    </router-link>
-        
+    <!-- </router-link>
+         -->
 </template>
 
 <script>
 import Vue from 'vue';
+import axios from "@/services/placesService";
+import Content from "@/component/Content"
+import { mapActions, mapState } from "vuex";
 export default {
+    name: "cardContent",
+    computed: mapState({
+        content: state => state.content
+    }),
     props: {
         id: {
             type: String,
@@ -44,7 +51,21 @@ export default {
         txt: {
             type: String,
             required: true
-        } 
+        }
+    },
+    component: {
+        Content
+    },
+    methods: {
+        ...mapAction(['getContent']),
+        ...mapAction({
+            content: 'getContent'
+        })
+    },
+    async mounted(){
+        const content = (await axios.getContent(id)).data.content;
+        console.log("content", content);
+        this.$store.dispatch("getContent", content);
     }
 }
 </script>

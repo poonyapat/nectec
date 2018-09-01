@@ -7,5 +7,8 @@ export default {
   },
   show () {
     return Api().get()
+  },
+  getContent(id){
+    return Api().get(`content/${id}`)
   }
 }

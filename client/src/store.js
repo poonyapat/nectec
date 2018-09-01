@@ -10,7 +10,9 @@ export default new Vuex.Store({
     createPersistedState()
   ],
   state: {
-    hilights: ""
+    hilights: "",
+    content: "",
+    temples: ""
     
   },
   getters: {
@@ -19,12 +21,24 @@ export default new Vuex.Store({
   mutations: {
     setHilights(state, hilights){
       state.hilights = hilights
+    },
+    setContent(state, content){
+      state.content = content
+    },
+    setTemples(state, temples){
+      state.temples = temples
     }
 
   },
   actions: {
     getHilights({commit}, data){
       commit('setHilights', data)
+    },
+    getContent({commit}, data){
+      commit('setContent', data)
+    },
+    getTemples({commit}, data){
+      commit('setTemples', data)
     }
 
   }

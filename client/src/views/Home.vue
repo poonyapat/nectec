@@ -48,7 +48,7 @@
       <hr>
       <div class="container">
         <div class="row">
-          <card-content class="col-3" v-for="(item, index) in hilights" v-if="index < 4" 
+          <card-content class="col-3" v-for="(item, index) in temples" v-if="index < 4" 
             :key="item.id"
             :id="item.id"
             :img="!item.media ? '' : item.media[0].bigPic"
@@ -65,10 +65,16 @@
           <!-- init slide -->
         </div> 
       </div>
-
-      <!-- <img alt="Vue logo" src="../assets/logo.png">
-      <google-map/> -->
-
+      <div class="container">
+        <div class="row">
+          <card-content class="col-3" v-for="(item, index) in hilights" v-if="index < 4" 
+            :key="item.id"
+            :id="item.id"
+            :img="!item.media ? '' : item.media[0].bigPic"
+            :txt="item.title"
+          />
+        </div>
+      </div>
     </div>
 
   
@@ -87,7 +93,8 @@ Vue.component("b-carousel", bCarousel);
 export default {
   name: "home",
   computed: mapState({
-    hilights: state => state.hilights
+    hilights: state => state.hilights,
+    temples: state => state.temples
   }),
 
   data() {
@@ -110,17 +117,21 @@ export default {
     onSlideEnd(slide) {
       this.sliding = false;
     },
-    ...mapActions(["getHilights"]),
+    ...mapActions(["getHilights", "getTemples"]),
     ...mapActions({
-      hilight: "getHilights"
+      hilights: "getHilights",
+      temples: "getTemples"
+
     })
   },
   async mounted() {
     const highlights = (await axios.get()).data.hilights;
     console.log(highlights);
     this.$store.dispatch("getHilights", highlights);
-    console.log("DONEEEEEE!!!!");
-    console.log(this.$store.state);
+
+    const temples = (await axios.get()).data.temples;
+    console.log(temples);
+    this.$store.dispatch("getTemples", temples)
   }
 };
 </script>

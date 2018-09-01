@@ -53,7 +53,7 @@ export default {
         key: 'YOUR_API_TOKEN',
         libraries: 'places',
     },
-    prop:['Name', 'description', 'img', 'lat', 'lng']
+    prop: ['name', 'description', 'img', 'lat', 'lng']
 }
 </script>
 
