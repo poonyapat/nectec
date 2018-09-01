@@ -1,8 +1,8 @@
 <template>
     <div class="container">
       <div class="row">
-
         <div class="col-md-2"/>
+        
         <!-- imageSlide -->
         <div class="col-md-8">
           <b-carousel id="carousel1"
@@ -33,14 +33,6 @@
                   <img slot="img" class="d-block img-fluid w-100" width="1024" height="480"
                       src="https://picsum.photos/1024/480/?image=55" alt="image slot">
               </b-carousel-slide>
-
-              <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
-                  <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                  eros felis, tincidunt a tincidunt eget, convallis vel est. Ut pellentesque
-                  ut lacus vel interdum.
-                  </p>
-              </b-carousel-slide>
           </b-carousel>
 
         </div>
@@ -49,10 +41,24 @@
 
       <!-- 3D Slide-->
       <div class="row">
+        <h3>วัดสำคัญในประเทศไทย</h3>
+        <hr/>
+        <div class="col-md-8">
+          <!-- init slide -->
+
+        </div> 
+      </div>
+      <br/>
+      <div class="row">
+        <h3>สถานที่ทางประวัติศาสตร์</h3>
+        <hr/>
+        <div class="col-md-8">
+          <!-- init slide -->
+        </div> 
       </div>
 
-      <img alt="Vue logo" src="../assets/logo.png">
-      <google-map/>
+      <!-- <img alt="Vue logo" src="../assets/logo.png">
+      <google-map/> -->
 
     </div>
 
@@ -61,16 +67,36 @@
 
 <script>
 import Vue from 'vue'
-import bCarousel from 'bootstrap-vue/es/components/carousel/carousel';
+import bCarousel from 'bootstrap-vue/es/components/carousel/carousel'
 import GoogleMap from '@/components/GoogleMap.vue'
+import axios from 'axios'
 Vue.component('b-carousel', bCarousel);
 // @ is an alias to /src
 
 export default {
+  data() {
+    return {
+      posts: [],
+      errors: []
+    }
+  },
+
+  // created() {
+  //   axios.get(`http://192.168.43.153:8081/`)
+  //   .then(response => {
+  //     this.posts = response.data
+  //   })
+  //   .catch(e => {
+  //     this.errors.push(e)
+  //   })
+
+  // },
+
   name: 'home',
   components: {
       GoogleMap
     },
+
   methods: {
     onSlideStart (slide) {
       this.sliding = true
@@ -83,3 +109,4 @@ export default {
   }
 }
 </script>
+
