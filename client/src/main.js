@@ -6,19 +6,14 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import colors from 'vuetify/es5/util/colors'
 import { sync } from 'vuex-router-sync'
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdbvue/build/css/mdb.css';
 import * as VueGoogleMaps from 'vue2-google-maps'
 
 
 Vue.config.productionTip = false
 
-Vue.use(Vuetify, {
-  theme: {
-    primary: colors.indigo.darken1,
-    secondary: colors.grey.darken1
-  }
-})
+Vue.use(Vuetify)
 
 Vue.use(VueGoogleMaps, {
   load: {

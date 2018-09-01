@@ -29,6 +29,11 @@ export default new Router({
       path: '/tel',
       name: 'tel',
       component: Tel
+    },
+    {
+      path: '/content',
+      name: 'search',
+      component: Tel
     }
   ]
 })

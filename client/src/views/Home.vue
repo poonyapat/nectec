@@ -1,45 +1,8 @@
 <template>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-2"/>
-        
-        <!-- imageSlide -->
-        <div class="col-md-8">
-          <b-carousel id="carousel1"
-                  style="text-shadow: 1px 1px 2px #333;"
-                  controls
-                  indicators
-                  background="#ababab"
-                  :interval="4000"
-                  img-width="800"
-                  img-height="480"
-                  v-model="slide"
-                  @sliding-start="onSlideStart"
-                  @sliding-end="onSlideEnd"
-          >
-              <b-carousel-slide caption="First slide"
-                                  text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-                                  img-src="https://picsum.photos/1024/480/?image=52"
-              ></b-carousel-slide>
-
-              <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
-                  <h1>Hello world!</h1>
-              </b-carousel-slide>
-
-              <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58">
-              </b-carousel-slide>
-
-              <b-carousel-slide>
-                  <img slot="img" class="d-block img-fluid w-100" width="1024" height="480"
-                      src="https://picsum.photos/1024/480/?image=55" alt="image slot">
-              </b-carousel-slide>
-          </b-carousel>
-
-        </div>
-        <div class="col-md-2"/>
-      </div>
-      <br>
-      <!-- 3D Slide-->
+  <div class="container">
+    <div class="row">
+      <carousel-vue :array="hilights"/>
+    </div>
       <div class="row">
         <div class="col-md-12">
           <h3>วัดสำคัญในประเทศไทย</h3>
@@ -48,7 +11,7 @@
       <hr>
       <div class="container">
         <div class="row">
-          <card-content class="col-3" v-for="(item, index) in temples" v-if="index < 4" 
+          <card-content class="col-3" v-for="(item, index) in temples" v-if="index < 4"
             :key="item.id"
             :id="item.id"
             :img="!item.media ? '' : item.media[0].bigPic"
@@ -56,31 +19,29 @@
           />
         </div>
       </div>
-      
+
       <br/>
       <div class="row">
         <h3>สถานที่ทางประวัติศาสตร์</h3>
         <hr/>
-        <div class="col-md-8">
-          <!-- init slide -->
-        </div> 
-      </div>
-      <div class="container">
-        <div class="row">
-          <template  class="col-3" v-for="(item, index) in $store.state.hilights" v-if="index < 4">
-            {{item.id}}  {{ item.media.length}}  
-            <card-content
-              :key="item.id"
-              :id="item.id"
-              :img="!item.media ? '' : item.media[0].bigPic"
-              :txt="item.title"
-            />
-          </template>
+        <div class="container">
+          <div class="row">
+          <card-content class="col-3" v-for="(item, index) in hilights" v-if="index > 3 && index < 8"
+            :key="item.id"
+            :id="item.id"
+            :img="!item.media ? '' : item.media[0].bigPic"
+            :txt="item.title"
+          />
+          </div>
         </div>
       </div>
+
+      <!-- <img alt="Vue logo" src="../assets/logo.png">
+      <google-map/> -->
+
     </div>
 
-  
+
 </template>
 
 <script>
@@ -90,7 +51,7 @@ import GoogleMap from "@/components/GoogleMap.vue";
 import CardContent from "@/components/CardContent.vue";
 import axios from "@/services/placesService";
 import { mapActions, mapState } from "vuex";
-Vue.component("b-carousel", bCarousel);
+import CarouselVue from '@/components/Carousel';
 // @ is an alias to /src
 
 export default {
@@ -110,7 +71,7 @@ export default {
   },
 
   components: {
-    GoogleMap, CardContent
+    GoogleMap, CardContent, CarouselVue
   },
 
   methods: {
@@ -122,9 +83,8 @@ export default {
     },
     ...mapActions(["getHilights", "getTemples"]),
     ...mapActions({
-      hilights: "getHilights",
+      hilight: "getHilights",
       temples: "getTemples"
-
     })
   },
   async mounted() {
@@ -133,10 +93,10 @@ export default {
     this.$store.dispatch("getHilights", highlights);
 
     const temples = (await axios.get()).data.temples;
-    console.log(temples);
     this.$store.dispatch("getTemples", temples)
   }
 };
 </script>
+
 
 
