@@ -6,12 +6,10 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import colors from 'vuetify/es5/util/colors'
 import { sync } from 'vuex-router-sync'
-<<<<<<< HEAD
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'mdbvue/build/css/mdb.css';
-=======
 import * as VueGoogleMaps from 'vue2-google-maps'
->>>>>>> origin/ploymel
+
 
 Vue.config.productionTip = false
 

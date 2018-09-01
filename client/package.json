@@ -9,17 +9,13 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-<<<<<<< HEAD
     "bootstrap-vue": "^2.0.0-rc.11",
     "mdbvue": "^4.5.1",
     "vue": "^2.5.17",
     "vue-carousel": "^0.11.0",
     "vue-material": "^1.0.0-beta-10.2",
-=======
     "cors": "^2.8.4",
-    "vue": "^2.5.17",
     "vue-resource": "^1.5.1",
->>>>>>> origin/ploymel
     "vue-router": "^3.0.1",
     "vue2-google-maps": "^0.10.2",
     "vuetify": "^1.2.1",

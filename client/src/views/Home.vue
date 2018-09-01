@@ -1,6 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div>
     <div class="container">
       <div class="row">
 
@@ -51,23 +49,23 @@
 
       <!-- 3D Slide-->
       <div class="row">
-        
       </div>
+
+      <img alt="Vue logo" src="../assets/logo.png">
+      <google-map/>
+
     </div>
-=======
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <google-map/>
->>>>>>> origin/ploymel
-  </div>
+
+  
 </template>
 
 <script>
 import Vue from 'vue'
 import bCarousel from 'bootstrap-vue/es/components/carousel/carousel';
+import GoogleMap from '@/components/GoogleMap.vue'
 Vue.component('b-carousel', bCarousel);
 // @ is an alias to /src
-<<<<<<< HEAD
+
 export default {
   methods: {
     onSlideStart (slide) {
@@ -75,15 +73,12 @@ export default {
     },
     onSlideEnd (slide) {
       this.sliding = false
-    }
-=======
-import GoogleMap from '@/components/GoogleMap.vue'
+    },
 
-export default {
-  name: 'home',
-  components: {
-    GoogleMap
->>>>>>> origin/ploymel
+    name: 'home',
+    components: {
+      GoogleMap
+    }
   }
 }
 </script>
