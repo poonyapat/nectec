@@ -28,7 +28,7 @@ module.exports = {
                 callback(this.templeData)
         })
     },
-    loadTempleMedia(callback){
+    loadTempleMedia(callback, callback2){
         media = {
             central: [],
             north: [],
@@ -68,6 +68,7 @@ module.exports = {
                                                     .on('end', data => {
                                                         console.log("Complete loaded west media")
                                                         callback(media)
+                                                        callback2(media)
                                                     })
                                             })
                                 })

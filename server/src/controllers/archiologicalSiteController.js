@@ -13,10 +13,11 @@
 //     }
 // }
 
+
 const Api = require('./api')
 
 async function find (params) {
-    const data = await Api().get('query', {
+    let data = (await Api().get('query', {
         params: {
             dsname: params.dsname,
             path: params.path,
@@ -28,10 +29,38 @@ async function find (params) {
             limit: params.operator || 100,
             offset: 0
         }
-    })
+    })).data.data
     // console.log(data.data)
-    console.log('Complete Loaded',params.path)
-    return data.data.data
+    console.log('Complete Loaded arch',params.path)
+    return data
+}
+
+addMedia = (media) =>{
+    addMediaForEachRegion(archiologicalSite.east, media.east)
+    addMediaForEachRegion(archiologicalSite.central, media.central)
+    addMediaForEachRegion(archiologicalSite.west, media.west)
+    addMediaForEachRegion(archiologicalSite.north, media.north)
+    addMediaForEachRegion(archiologicalSite.south, media.south)
+    addMediaForEachRegion(archiologicalSite.northEast, media.northEast)
+    console.log(archiologicalSite)
+}
+
+
+addMediaForEachRegion = (regionArch, regionMedia) => {
+    for (let i = 0; i < regionArch.length; i++){
+        regionArch[i].media = []
+        for (let j = 0; j < regionMedia.length; j++){
+            if (regionArch[i].id === regionMedia[j][0]){
+                regionArch[i].media.push(({
+                    thumbPic: regionMedia[j][1],
+                    bigPic: regionMedia[j][2],
+                    thumbVdo: regionMedia[j][3],
+                    bigVdo: regionMedia[j][4],
+                    type: regionMedia[j][5]
+                }))
+            }
+        }
+    }
 }
 
 archiologicalSite= {
@@ -43,7 +72,7 @@ archiologicalSite= {
     northEast: []
 },
 module.exports = {
-    load(){
+    load(media){
         find({
             dsname: 'vir_225_1533289131',
             path: 'vir_225_1533289131'
@@ -68,7 +97,10 @@ module.exports = {
                             find({
                                 dsname: 'vir_232',
                                 path: 'vir_232',
-                            }).then(a => {archiologicalSite.northEast = a})
+                            }).then(a => {
+                                archiologicalSite.northEast = a
+                                addMedia(media)
+                            })
                         })
                     })
                 })
