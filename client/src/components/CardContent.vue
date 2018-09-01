@@ -37,7 +37,7 @@
 <script>
 import Vue from 'vue';
 import axios from "@/services/placesService";
-import Content from "@/component/Content"
+import Content from "@/components/Content"
 import { mapActions, mapState } from "vuex";
 export default {
     name: "cardContent",
@@ -62,13 +62,13 @@ export default {
         Content
     },
     methods: {
-        ...mapAction(['getContent']),
-        ...mapAction({
+        ...mapActions(['getContent']),
+        ...mapActions({
             content: 'getContent'
         })
     },
     async mounted(){
-        const content = (await axios.getContent(id)).data.content;
+        const content = (await axios.getContent(this.id)).data.object;
         console.log("content", content);
         this.$store.dispatch("getContent", content);
     }

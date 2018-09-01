@@ -20,6 +20,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setHilights(state, hilights){
+      console.log("updating hilights")
       state.hilights = hilights
     },
     setContent(state, content){
