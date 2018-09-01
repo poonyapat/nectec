@@ -15,24 +15,24 @@
 
 const Api = require('./api')
 
-// async function find (params) {
-//     const data = await Api().get('query', {
-//         params: {
-//             dsname: params.dsname,
-//             path: params.path,
-//             property: params.property || 'col_9',
-//             operator: params.operator || 'CONTAINS',
-//             valueLiteral: params.valueLiteral || 'โบราณสถาน',
-//             loadAll: 1,
-//             type: 'json',
-//             limit: params.operator || 100,
-//             offset: 0
-//         }
-//     })
-//     // console.log(data.data)
-//     console.log('Complete Loaded',params.path)
-//     return data.data.data
-// }
+async function find (params) {
+    const data = await Api().get('query', {
+        params: {
+            dsname: params.dsname,
+            path: params.path,
+            property: params.property || 'col_9',
+            operator: params.operator || 'CONTAINS',
+            valueLiteral: params.valueLiteral || 'โบราณสถาน',
+            loadAll: 1,
+            type: 'json',
+            limit: params.operator || 100,
+            offset: 0
+        }
+    })
+    // console.log(data.data)
+    console.log('Complete Loaded',params.path)
+    return data.data.data
+}
 
 archiologicalSite= {
     east: [],
@@ -44,14 +44,6 @@ archiologicalSite= {
 },
 module.exports = {
     load(){
-        // archiologicalSite = {
-        //     east: [],
-        //     north: [],
-        //     central: [],
-        //     south: [],
-        //     westL: [],
-        //     northEast: []
-        // }
         find({
             dsname: 'vir_225_1533289131',
             path: 'vir_225_1533289131'
