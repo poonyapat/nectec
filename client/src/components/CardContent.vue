@@ -1,5 +1,10 @@
 <template>
-    <!-- <router-link :to="{ name: 'content'}"> -->
+    <router-link :to="{ name: 'content', params: {'name': this.content.title, 
+                            'description': this.content.description,
+                            'img': this.content.media ? '' : this.content.media[0].bigPic,
+                            'lat': this.content.position.lat,
+                            'lng': this.content.position.lon
+                            }}">
         <div>
             <v-hover>
                 <v-card
@@ -25,8 +30,8 @@
                 </v-card>
             </v-hover>
         </div>
-    <!-- </router-link>
-         -->
+    </router-link>
+        
 </template>
 
 <script>
