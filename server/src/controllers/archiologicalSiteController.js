@@ -15,6 +15,7 @@
 
 
 const Api = require('./api')
+const fs = require('fs')
 
 async function find (params) {
     let data = (await Api().get('query', {
@@ -63,50 +64,59 @@ addMediaForEachRegion = (regionArch, regionMedia) => {
     }
 }
 
+function readJSONFile (path) {
+    let regionData = JSON.parse(fs.readFileSync(path)).data
+    console.log('Read',path, 'completed')
+    return regionData
+}
+
 archiologicalSite= {
-    east: [],
-    north: [],
-    central: [],
-    south: [],
-    westL: [],
-    northEast: []
+    east: readJSONFile('src/assets/archiological_site/east_site.json'),
+    north: readJSONFile('src/assets/archiological_site/central_site.json'),
+    central: readJSONFile('src/assets/archiological_site/north_site.json'),
+    south: readJSONFile('src/assets/archiological_site/northeast_site.json'),
+    west: readJSONFile('src/assets/archiological_site/west_site.json'),
+    northEast: readJSONFile('src/assets/archiological_site/south_site.json')
 },
 module.exports = {
     load(media){
-        find({
-            dsname: 'vir_225_1533289131',
-            path: 'vir_225_1533289131'
-        }).then(a => {
-            archiologicalSite.east = a
-            find({
-                dsname: 'vir_228',
-                path: 'vir_228'
-            }).then(a => {archiologicalSite.central = a
-                find({
-                    dsname: 'vir_224',
-                    path: 'vir_224'
-                }).then(a => {archiologicalSite.south = a
-                    find({
-                        dsname: 'vir_229',
-                        path: 'vir_229'
-                    }).then(a => {archiologicalSite.west = a
-                        find({
-                            dsname: 'vir_231',
-                            path: 'vir_231'
-                        }).then(a => {archiologicalSite.north = a
-                            find({
-                                dsname: 'vir_232',
-                                path: 'vir_232',
-                            }).then(a => {
-                                archiologicalSite.northEast = a
-                                addMedia(media)
-                            })
-                        })
-                    })
-                })
-            })
-        })
+        addMedia(media)
     },
+    // load(media){
+    //     find({
+    //         dsname: 'vir_225_1533289131',
+    //         path: 'vir_225_1533289131'
+    //     }).then(a => {
+    //         archiologicalSite.east = a
+    //         find({
+    //             dsname: 'vir_228',
+    //             path: 'vir_228'
+    //         }).then(a => {archiologicalSite.central = a
+    //             find({
+    //                 dsname: 'vir_224',
+    //                 path: 'vir_224'
+    //             }).then(a => {archiologicalSite.south = a
+    //                 find({
+    //                     dsname: 'vir_229',
+    //                     path: 'vir_229'
+    //                 }).then(a => {archiologicalSite.west = a
+    //                     find({
+    //                         dsname: 'vir_231',
+    //                         path: 'vir_231'
+    //                     }).then(a => {archiologicalSite.north = a
+    //                         find({
+    //                             dsname: 'vir_232',
+    //                             path: 'vir_232',
+    //                         }).then(a => {
+    //                             archiologicalSite.northEast = a
+    //                             addMedia(media)
+    //                         })
+    //                     })
+    //                 })
+    //             })
+    //         })
+    //     })
+    // },
     getArchiologicalSite(){
         console.log(archiologicalSite)
         return archiologicalSite
