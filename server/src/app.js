@@ -28,5 +28,5 @@ const TempleMachingController = require('./controllers/temple/templeMatchingCont
 const ArchiologicalSiteController = require('./controllers/archiologicalSiteController')
 ArchiologicalSiteController.load()
 csvFileController.loadTempleData(TempleMachingController.generateCompletedTempleData)
-// csvFileController.loadTempleMedia(log)
+csvFileController.loadTempleMedia()
 // console.log(ArchiologicalSiteController.findAll())
