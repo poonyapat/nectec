@@ -5,7 +5,6 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
 const config = require('./config/config')
-
 const app = express()
 
 app.use(morgan('combined'))
@@ -16,3 +15,7 @@ require('./routes')(app)
 
 app.listen(config.port)
 console.log(`Server started on port ${config.port}`)
+
+const csvFileController = require('./controllers/csvFileController')
+const TempleMachingController = require('./controllers/templeMatchingController')
+csvFileController.loadTempleData(TempleMachingController.generateCompletedTempleData)
