@@ -22,3 +22,11 @@ require('./routes')(app)
 
 app.listen(config.port)
 console.log(`Server started on port ${config.port}`)
+
+const csvFileController = require('./controllers/temple/csvFileController')
+const TempleMachingController = require('./controllers/temple/templeMatchingController')
+const ArchiologicalSiteController = require('./controllers/archiologicalSiteController')
+ArchiologicalSiteController.load()
+csvFileController.loadTempleData(TempleMachingController.generateCompletedTempleData)
+// csvFileController.loadTempleMedia(log)
+// console.log(ArchiologicalSiteController.findAll())
