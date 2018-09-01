@@ -5,11 +5,18 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
 const config = require('./config/config')
+const mongoose = require('mongoose')
+
 const app = express()
+
+// Import Models
+require('./models/Temple3D');
 
 app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
+
+mongoose.connect(config.mongoURI, { useNewUrlParser: true });
 
 require('./routes')(app)
 
