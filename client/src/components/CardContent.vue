@@ -1,10 +1,5 @@
 <template>
-    <router-link :to="{ name: 'content', params: {'name': this.content.title, 
-                            'description': this.content.description,
-                            'img': this.content.media ? '' : this.content.media[0].bigPic,
-                            'lat': this.content.position.lat,
-                            'lng': this.content.position.lon
-                            }}">
+    <router-link :to="{name: 'content', params: {id: id}}">
         <div>
             <v-hover>
                 <v-card
@@ -21,7 +16,7 @@
                             <div
                                 id="card"
                                 v-if="hover"
-                                class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
+                                class="d-flex transition-fast-in-fast-out black text-md-center darken-2 v-card--reveal headline white--text .subheading"
                                 style="height: 100%;">
                                 {{ txt }}
                             </div>
@@ -31,19 +26,12 @@
             </v-hover>
         </div>
     </router-link>
-        
+
 </template>
 
 <script>
 import Vue from 'vue';
-import axios from "@/services/placesService";
-import Content from "@/components/Content"
-import { mapActions, mapState } from "vuex";
 export default {
-    name: "cardContent",
-    computed: mapState({
-        content: state => state.content
-    }),
     props: {
         id: {
             type: String,
@@ -57,25 +45,13 @@ export default {
             type: String,
             required: true
         }
-    },
-    component: {
-        Content
-    },
-    methods: {
-        ...mapActions(['getContent']),
-        ...mapActions({
-            content: 'getContent'
-        })
-    },
-    async mounted(){
-        const content = (await axios.getContent(this.id)).data.object;
-        console.log("content", content);
-        this.$store.dispatch("getContent", content);
     }
 }
 </script>
 
-<style>
+<style scoped>
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
 .v-card--reveal {
   align-items: center;
   bottom: 0;
@@ -83,6 +59,9 @@ export default {
   opacity: .5;
   position: absolute;
   width: 100%;
-  font-family: 'kanit';
+}
+
+#card {
+    font-family: 'Kanit' !important;
 }
 </style>

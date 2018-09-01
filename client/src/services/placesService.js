@@ -8,7 +8,11 @@ export default {
   show () {
     return Api().get()
   },
-  getContent(id){
-    return Api().get(`content/${id}`)
+  index (search) {
+    return Api().get('content', {
+      params: {
+        search: search
+      }
+    })
   }
 }

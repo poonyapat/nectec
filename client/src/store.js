@@ -11,20 +11,15 @@ export default new Vuex.Store({
   ],
   state: {
     hilights: "",
-    content: "",
     temples: ""
-    
+
   },
   getters: {
 
   },
   mutations: {
     setHilights(state, hilights){
-      console.log("updating hilights")
       state.hilights = hilights
-    },
-    setContent(state, content){
-      state.content = content
     },
     setTemples(state, temples){
       state.temples = temples
@@ -34,9 +29,6 @@ export default new Vuex.Store({
   actions: {
     getHilights({commit}, data){
       commit('setHilights', data)
-    },
-    getContent({commit}, data){
-      commit('setContent', data)
     },
     getTemples({commit}, data){
       commit('setTemples', data)
