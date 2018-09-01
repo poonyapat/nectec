@@ -10,12 +10,22 @@ export default new Vuex.Store({
     createPersistedState()
   ],
   state: {
+    hilights: ""
+    
+  },
+  getters: {
 
   },
   mutations: {
+    setHilights(state, hilights){
+      state.hilights = hilights
+    }
 
   },
   actions: {
+    getHilights({commit}, data){
+      commit('setHilights', data)
+    }
 
   }
 })

@@ -1,57 +1,62 @@
 <template>
-    <div>
-       <v-hover>
-            <v-card
-            slot-scope="{ hover }"
-            class="mx-auto"
-            color="grey lighten-4"
-            max-width="600"
-            >
-            <v-img
-                :aspect-ratio="16/9"
-                :src="img"
-            >
-                <v-expand-transition>
-                <div
-                    v-if="hover"
-                    class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
-                    style="height: 100%;"
+    <router-link to="`content/${id}`">
+        <div>
+            <v-hover>
+                <v-card
+                    slot-scope="{ hover }"
+                    class="mx-auto"
+                    color="grey lighten-4"
+                    max-width="300"
                 >
-                    {{ txt }}
-                </div>
-                </v-expand-transition>
-            </v-img>
-            <v-card-text
-                class="pt-4"
-                style="position: relative;"
-            >
-                <v-btn
-                absolute
-                color="orange"
-                class="white--text"
-                fab
-                large
-                right
-                top
-                >
-                <v-icon>mdi-cart</v-icon>
-                </v-btn>
-                <div class="font-weight-light grey--text title mb-2">For the perfect meal</div>
-                <h3 class="display-1 font-weight-light orange--text mb-2">QW cooking utensils</h3>
-                <div class="font-weight-light title mb-2">
-                Our Vintage kitchen utensils delight any chef.<br>
-                Made of bamboo by hand
-                </div>
-            </v-card-text>
-            </v-card>
-        </v-hover>
-    </div>
+                    <v-img
+                        :aspect-ratio="16/9"
+                        :src="img"
+                    >
+                        <v-expand-transition>
+                            <div
+                                id="card"
+                                v-if="hover"
+                                class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
+                                style="height: 100%;">
+                                {{ txt }}
+                            </div>
+                        </v-expand-transition>
+                    </v-img>
+                </v-card>
+            </v-hover>
+        </div>
+    </router-link>
+        
 </template>
 
 <script>
 import Vue from 'vue';
 export default {
-    props: ['img', 'txt', 'id']
+    props: {
+        id: {
+            type: String,
+            required: true
+        },
+        img: {
+            type: String,
+            required: true
+        },
+        txt: {
+            type: String,
+            required: true
+        } 
+    }
 }
 </script>
 
+<style>
+.v-card--reveal {
+  align-items: center;
+  bottom: 0;
+  justify-content: center;
+  opacity: .5;
+  position: absolute;
+  width: 100%;
+  font-family: 'kanit';
+}
+</style>

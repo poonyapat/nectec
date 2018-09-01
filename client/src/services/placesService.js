@@ -1,10 +1,11 @@
 import Api from '@/services/api'
 
 export default {
-  get () {
-    return Api().get('/')
+  get() {
+    console.log("in get func")
+    return Api().get('')
   },
   show () {
-    return Api().get('/')
+    return Api().get()
   }
 }
