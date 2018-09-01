@@ -4,7 +4,7 @@ const GoogleService = require('./services/googleService')
 
 module.exports = (app) => {
 
-    app.get('/place', PlaceController.index)
+    app.get('/', PlaceController.index)
 
     app.get('/content/:id')
 
