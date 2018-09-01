@@ -44,14 +44,6 @@ archiologicalSite= {
 },
 module.exports = {
     load(){
-        // archiologicalSite = {
-        //     east: [],
-        //     north: [],
-        //     central: [],
-        //     south: [],
-        //     westL: [],
-        //     northEast: []
-        // }
         find({
             dsname: 'vir_225_1533289131',
             path: 'vir_225_1533289131'
