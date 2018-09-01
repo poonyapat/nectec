@@ -38,16 +38,25 @@
         </div>
         <div class="col-md-2"/>
       </div>
-
+      <br>
       <!-- 3D Slide-->
       <div class="row">
-        <h3>วัดสำคัญในประเทศไทย</h3>
-        <hr/>
-        <div class="col-md-8">
-          <!-- init slide -->
-
-        </div> 
+        <div class="col-md-12">
+          <h3>วัดสำคัญในประเทศไทย</h3>
+        </div>
       </div>
+      <hr>
+      <div class="container">
+        <div class="row">
+          <card-content class="col-3" v-for="(item, index) in temples" v-if="index < 4" 
+            :key="item.id"
+            :id="item.id"
+            :img="!item.media ? '' : item.media[0].bigPic"
+            :txt="item.title"
+          />
+        </div>
+      </div>
+      
       <br/>
       <div class="row">
         <h3>สถานที่ทางประวัติศาสตร์</h3>
@@ -56,57 +65,78 @@
           <!-- init slide -->
         </div> 
       </div>
-
-      <!-- <img alt="Vue logo" src="../assets/logo.png">
-      <google-map/> -->
-
+      <div class="container">
+        <div class="row">
+          <template  class="col-3" v-for="(item, index) in $store.state.hilights" v-if="index < 4">
+            {{item.id}}  {{ item.media.length}}  
+            <card-content
+              :key="item.id"
+              :id="item.id"
+              :img="!item.media ? '' : item.media[0].bigPic"
+              :txt="item.title"
+            />
+          </template>
+        </div>
+      </div>
     </div>
 
   
 </template>
 
 <script>
-import Vue from 'vue'
-import bCarousel from 'bootstrap-vue/es/components/carousel/carousel'
-import GoogleMap from '@/components/GoogleMap.vue'
-import axios from 'axios'
-Vue.component('b-carousel', bCarousel);
+import Vue from "vue";
+import bCarousel from "bootstrap-vue/es/components/carousel/carousel";
+import GoogleMap from "@/components/GoogleMap.vue";
+import CardContent from "@/components/CardContent.vue";
+import axios from "@/services/placesService";
+import { mapActions, mapState } from "vuex";
+Vue.component("b-carousel", bCarousel);
 // @ is an alias to /src
 
 export default {
+  name: "home",
+  computed: mapState({
+    hilights: state => state.hilights,
+    temples: state => state.temples
+  }),
+
   data() {
     return {
-      posts: [],
-      errors: []
-    }
+      posts: null,
+      errors: [],
+      slide: 0,
+      sliding: true
+    };
   },
 
-  // created() {
-  //   axios.get(`http://192.168.43.153:8081/`)
-  //   .then(response => {
-  //     this.posts = response.data
-  //   })
-  //   .catch(e => {
-  //     this.errors.push(e)
-  //   })
-
-  // },
-
-  name: 'home',
   components: {
-      GoogleMap
-    },
+    GoogleMap, CardContent
+  },
 
   methods: {
-    onSlideStart (slide) {
-      this.sliding = true
+    onSlideStart(slide) {
+      this.sliding = true;
     },
-    onSlideEnd (slide) {
-      this.sliding = false
+    onSlideEnd(slide) {
+      this.sliding = false;
     },
+    ...mapActions(["getHilights", "getTemples"]),
+    ...mapActions({
+      hilights: "getHilights",
+      temples: "getTemples"
 
-    
+    })
+  },
+  async mounted() {
+    const highlights = (await axios.get()).data.hilights;
+    console.log(highlights);
+    this.$store.dispatch("getHilights", highlights);
+
+    const temples = (await axios.get()).data.temples;
+    console.log(temples);
+    this.$store.dispatch("getTemples", temples)
   }
-}
+};
 </script>
+
 

@@ -24,9 +24,15 @@
             </p>
         </div>
 
+        <div v-if="url != ''">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" :src="url" allowfullscreen></iframe>
+            </div>
+        </div>
         <!-- location -->
         <div class="row">
-            <GmapMap
+            <GoogleMap :lat="lat" :lng="lng"/>
+            <!-- <GmapMap
                 :center="{lat, lng}"
                 :zoom="7"
                 map-type-id="terrain"
@@ -40,20 +46,47 @@
                     :draggable="true"
                     @click="center=m.position"
                 />
-            </GmapMap>
+            </GmapMap> -->
         </div>
     </div>
 </template>
 
 <script>
 import Vue from 'vue';
+import GoogleMap from '@/components/GoogleMap'
 import * as VueGoogleMaps from 'vue2-google-maps'
 export default {
-    load: {
-        key: 'YOUR_API_TOKEN',
-        libraries: 'places',
-    },
-    prop:['Name', 'description', 'img', 'lat', 'lng']
+    // load: {
+    //     key: 'YOUR_API_TOKEN',
+    //     libraries: 'places',
+    // },
+    props: {
+        name: {
+            type: String,
+            required: true
+        },
+        img: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+            required: true
+        },
+        lat: {
+             type: String,
+            required: true
+        },
+        lng: {
+             type: String,
+            required: true
+        },
+        url: {
+             type: String,
+            required: true
+        }
+    }
+    // prop: ['name', 'description', 'img', 'lat', 'lng']
 }
 </script>
 

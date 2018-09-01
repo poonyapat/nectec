@@ -17,6 +17,7 @@ const regionData = [central, east, north_east, north, south, west]
 templeData = []
 module.exports = {
     generateCompletedTempleData(csvData){
+
         templeData = []
         for (let i = 0; i < csvData.length; i++){
             let amphoe = csvData[i][2].match('อำเภอ[^ ]+') || csvData[i][2].match('เขต[^ ]+')
@@ -26,7 +27,6 @@ module.exports = {
                 amphoe.replace('เขต', '')
             }
             let title = 'วัด' + csvData[i][1]
-            title = title.replace(new RegExp('[ ์]', 'g'),'')
             // validate
             let run = true
             for (let j = 0; j < regionData.length && run; j++){
@@ -34,7 +34,7 @@ module.exports = {
                     if (regionData[j][k].title === title && regionData[j][k].province === csvData[i][7]){
                         let region
                         switch(j){
-                            case 0: region = 'ภาคกลาง' 
+                            case 0: region = 'ภาคกลาง'
                                 break
                             case 1: region = 'ภาคตะวันออก'
                                 break
@@ -45,14 +45,16 @@ module.exports = {
                             case 4: region = 'ภาคใต้'
                                 break
                             case 5: region = 'ภาคตะวันตก'
+                                break
                         }
+
                         templeData.push({
                             id: regionData[j][k].id,
                             title: regionData[j][k].title,
                             description: regionData[j][k].description,
                             tambon: regionData[j][k].tambon,
                             amphoe: regionData[j][k].amphoe,
-                            positon: {
+                            position: {
                                 lat: regionData[j][k].lat,
                                 lon: regionData[j][k].lon
                             },
@@ -138,7 +140,7 @@ module.exports = {
                             })
                         }
                     }
-                    break 
+                    break
                 case 'ภาคตะวันตก':
                     for (let j = 0; j < media.west.length; j++){
                         if (templeData[i].id === media.west[j][0]){
@@ -151,12 +153,12 @@ module.exports = {
                             })
                         }
                     }
-                    break 
+                    break
             }
         }
     },
 
-    getTempleData(req, res){
-        res.send(templeData)
+    getTempleData(){
+        return templeData
     }
 }

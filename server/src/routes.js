@@ -1,15 +1,16 @@
-
-const TempleMatchingController = require('./controllers/temple/templeMatchingController')
-const ArchiologicalSiteController = require('./controllers/archiologicalSiteController')
 const ModelController = require('./controllers/modelController')
-module.exports = (app) => {
-    app.get('/temple', TempleMatchingController.getTempleData)
-    app.get('/archiology', ArchiologicalSiteController.getArchiologicalSite)
-    app.get('/', (req, res) => {
-        res.send('Hello')
-    })
+const PlaceController = require('./controllers/placeController')
 
-    app.get('/content/:id')
+module.exports = (app) => {
+
+    app.get('/', PlaceController.index)
+
+    app.get('/content', PlaceController.search)
+
+    app.get('/content/:id', PlaceController.get)
+
+    app.get('/list', PlaceController.show)
 
     app.get('/content/:id/model', ModelController.index)
+
 }
