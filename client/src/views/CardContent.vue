@@ -51,7 +51,7 @@
 <script>
 import Vue from 'vue';
 export default {
-    props: ['img', 'txt']
+    props: ['img', 'txt', 'id']
 }
 </script>
 

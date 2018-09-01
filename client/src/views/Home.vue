@@ -46,7 +46,11 @@
 
         </div>
         <div class="col-md-2"/>
+      </div>
 
+      <!-- 3D Slide-->
+      <div class="row">
+        
       </div>
     </div>
   </div>
