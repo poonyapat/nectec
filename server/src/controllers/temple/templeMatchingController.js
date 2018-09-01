@@ -54,7 +54,7 @@ module.exports = {
                             description: regionData[j][k].description,
                             tambon: regionData[j][k].tambon,
                             amphoe: regionData[j][k].amphoe,
-                            positon: {
+                            position: {
                                 lat: regionData[j][k].lat,
                                 lon: regionData[j][k].lon
                             },

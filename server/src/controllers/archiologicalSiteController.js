@@ -42,7 +42,6 @@ addMedia = (media) =>{
     addMediaForEachRegion(archiologicalSite.north, media.north)
     addMediaForEachRegion(archiologicalSite.south, media.south)
     addMediaForEachRegion(archiologicalSite.northEast, media.northEast)
-    console.log(archiologicalSite)
 }
 
 
@@ -108,7 +107,6 @@ module.exports = {
         })
     },
     getArchiologicalSite(){
-        console.log(archiologicalSite)
         return archiologicalSite
     }
 }

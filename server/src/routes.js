@@ -1,12 +1,11 @@
 const ModelController = require('./controllers/modelController')
 const PlaceController = require('./controllers/placeController')
-const GoogleService = require('./services/googleService')
 
 module.exports = (app) => {
 
-    app.get('/place', PlaceController.index)
+    app.get('/', PlaceController.index)
 
-    app.get('/content/:id')
+    app.get('/content/:id', PlaceController.get)
 
     app.get('/content/:id/model', ModelController.index)
 }
