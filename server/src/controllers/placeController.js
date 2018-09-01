@@ -29,7 +29,7 @@ module.exports = {
                 }
             }
             places.hilights = hilights
-            const temples = [
+            let temples = [
                 {id: 'MOC-34070', title: "วัดนางพญา", media: []},
                 {id: 'MOC-163100', title: "วัดมหาธาตุ อยุธยา", media: []},
                 {id: 'MOC-39988', title: "วัดศรีสวาย", media: []},
@@ -108,5 +108,39 @@ module.exports = {
         }
 
         res.send(results)
+    },
+    search (req, res) {
+        let results = []
+        for (let data in templeData) {
+            results.push({ id: templeData[data].id, title: templeData[data].title, province: templeData[data].province,  media: templeData[data].media })
+        }
+        for (let data in archilogicalSiteData) {
+            for (let index in archilogicalSiteData[data]) {
+                results.push({ id: archilogicalSiteData[data][index].id, title: archilogicalSiteData[data][index].title, province: archilogicalSiteData[data][index].province, media: archilogicalSiteData[data][index].media })
+            }
+        }
+
+        const search = req.query.search
+
+        let searchResults = results.map(result => {
+                return result.title.includes(search) ? result.title : ""
+        })
+
+        let otherResults = results.map(result => {
+            return result.province.includes(search) ? result.province : ""
+        })
+
+        searchResults.join(otherResults)
+        let returnResults = []
+        for (let i = 0; i < 10; i++) {
+            if (searchResults[i] != "") {
+                returnResults.push(searchResults[i])
+            }
+            else {
+                i--;
+            }
+        }
+
+        res.send(returnResults)
     }
 }

@@ -27,7 +27,6 @@ module.exports = {
                 amphoe.replace('เขต', '')
             }
             let title = 'วัด' + csvData[i][1]
-            title = title.replace(new RegExp('[ ์]', 'g'),'')
             // validate
             let run = true
             for (let j = 0; j < regionData.length && run; j++){
@@ -46,6 +45,7 @@ module.exports = {
                             case 4: region = 'ภาคใต้'
                                 break
                             case 5: region = 'ภาคตะวันตก'
+                                break
                         }
 
                         templeData.push({
