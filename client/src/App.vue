@@ -12,6 +12,7 @@
               <router-view/>
             </v-container>
           </main>
+          <page-footer />
         </v-app>
       </div>
     </body>
@@ -25,13 +26,15 @@ import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import HeaderNav from '@/components/Header'
+import PageFooter from '@/components/PageFooter'
 Vue.use(BootstrapVue);
 
 import Home from '@/views/Home.vue'
 export default {
   components: {
     Home,
-    HeaderNav
+    HeaderNav,
+    PageFooter
   }
 }
 </script>
