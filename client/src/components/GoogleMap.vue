@@ -1,7 +1,7 @@
 <template>
   <div>
     <gmap-map
-    :center="{lat:10, lng:10}"
+    :center="{lat:lat, lng:lng}"
     :zoom="7"
     map-type-id="terrain"
     style="width: 500px; height: 300px"
@@ -20,7 +20,6 @@
 
 <script>
 import PlacesService from '@/services/placesService'
-import SketchUp from '@/components/SketchUp.vue'
 
 export default {
   data () {
@@ -29,12 +28,20 @@ export default {
       info: null
     }
   },
+  props: {
+    lat: {
+      type: Number,
+      required: true
+    },
+    lng: {
+      type: Number,
+      required: true
+    }
+  },
   async mounted () {
     this.info = (await PlacesService.get()).data
+    console.log(this.lat, this.lng)
   },
-  components: {
-    SketchUp
-  }
 }
 </script>
 

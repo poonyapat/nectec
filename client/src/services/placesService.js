@@ -14,5 +14,8 @@ export default {
         search: search
       }
     })
+  },
+  getContent(id){
+    return Api().get(`content/${id}`)
   }
 }
