@@ -1,59 +1,65 @@
 <template>
-    <div class="container">
-        <!-- Name -->
-        <div class="row">
-            <div class="col-md-2"/>
-            <div class="dol-md-10">
-                {{ Name }}
-            </div>
-        </div>
+    <div class="container mt-5">
+        <!-- title -->
+        <h1 class="center-text pr-5">{{title}}</h1>
+        <v-layout justify-center row class="ma-4">
+            <v-flex md5 align-center class="ma-5">
+                <!-- img -->
+                <b-img :src="pic" fluid alt="Responsive image" />
+            </v-flex>
+            <v-flex md12>
+                <p v-html="description"/>
+            </v-flex>
+            <google-map :lat="parseFloat(lat)" :lng="parseFloat(lng)"/>
+        </v-layout>
 
-        <!-- img -->
-        <div class="row">
-            <div class="col-md-3"/>
-            <div class="dol-md-6">
-                <b-img :src="img" fluid alt="Responsive image" />
-            </div>
-            <div class="col-md-3"/>
-        </div>
-
-        <!-- description -->
-        <div class="row">
-            <p>
-                {{ description }}
-            </p>
-        </div>
-
-        <!-- location -->
-        <div class="row">
-            <GmapMap
-                :center="{lat, lng}"
-                :zoom="7"
-                map-type-id="terrain"
-                style="width: 500px; height: 300px"
-                >
-                <GmapMarker
-                    :key="index"
-                    v-for="(m, index) in markers"
-                    :position="m.position"
-                    :clickable="true"
-                    :draggable="true"
-                    @click="center=m.position"
-                />
-            </GmapMap>
-        </div>
     </div>
 </template>
 
 <script>
-import Vue from 'vue';
-import * as VueGoogleMaps from 'vue2-google-maps'
+import Vue from "vue";
+import * as VueGoogleMaps from "vue2-google-maps";
+import PlacesService from "@/services/placesService";
+import GoogleMap from "@/components/GoogleMap";
 export default {
-    load: {
-        key: 'YOUR_API_TOKEN',
-        libraries: 'places',
-    },
-    prop:['Name', 'description', 'img', 'lat', 'lng']
-}
+  load: {
+    key: "YOUR_API_TOKEN",
+    libraries: "places"
+  },
+  data() {
+    return {
+      title: "",
+      description: "",
+      lat: 0,
+      lng: 0,
+      pic: ""
+    };
+  },
+  props: {
+    markers: {
+      type: Object,
+      default: ""
+    }
+  },
+  components: {
+    GoogleMap
+  },
+  async mounted() {
+    const content = (await PlacesService.getContent(
+      this.$store.state.route.params.id
+    )).data.object;
+    console.log(content);
+    this.title = content.title;
+    this.description = content.description;
+    this.lat = content.position.lat;
+    this.lng = content.position.lon;
+    this.pic = content.media[0].bigPic;
+  }
+};
 </script>
 
+<style scoped>
+.center-text {
+  text-align: center;
+}
+</style>
