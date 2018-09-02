@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Content from '@/components/Content.vue'
 import Tel from '@/views/Tel.vue'
+import ShowData from '@/views/ShowData.vue'
 
 Vue.use(Router)
 
@@ -31,9 +32,9 @@ export default new Router({
       component: Tel
     },
     {
-      path: '/content',
-      name: 'search',
-      component: Tel
+      path: '/list',
+      name: 'list',
+      component: ShowData
     }
   ]
 })
