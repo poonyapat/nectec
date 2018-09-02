@@ -15,7 +15,6 @@
       @click="center=m.position"
     />
     </gmap-map>
-  <sketch-up></sketch-up>
   </div>
 </template>
 
