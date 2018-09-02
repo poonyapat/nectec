@@ -6,8 +6,9 @@
       :src="!item.media ? '' : item.media[0].bigPic"
       reverse-transition="fade"
       transition="fade"
-      light
-    ></v-carousel-item>
+    >
+    <h1>{{ item.title }}</h1>
+    </v-carousel-item>
   </v-carousel>
 </template>
 

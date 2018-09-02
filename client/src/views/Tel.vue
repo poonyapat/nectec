@@ -1,10 +1,10 @@
 <template>
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
                 <h2>สายด่วนบริการทางการแพทย์</h2>
             </div>
-            
+
             <ul>
                 <li>สำนักงานหลักประกันสุขภาพแห่งชาติ โทร. 1330</li>
             </ul>
@@ -32,15 +32,15 @@
         </ul>
 
         </div>
-        
 
-        
-    </div> 
+
+
+    </div>
 </template>
 
 <script>
 export default {
-    
+
 }
 </script>
 

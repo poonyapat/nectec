@@ -6,10 +6,10 @@ export default {
     return Api().get('')
   },
   show () {
-    return Api().get()
+    return Api().get('list')
   },
   index (search) {
-    return Api().get('content', {
+    return Api().get('list', {
       params: {
         search: search
       }
