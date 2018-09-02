@@ -12,7 +12,6 @@
             </v-flex>
             <google-map :lat="parseFloat(lat)" :lng="parseFloat(lng)"/>
         </v-layout>
-
     </div>
 </template>
 
