@@ -6,9 +6,8 @@
       :src="!item.media ? '' : item.media[0].bigPic"
       reverse-transition="fade"
       transition="fade"
-    >
-    <h1>{{ item.title }}</h1>
-    </v-carousel-item>
+      light
+    ></v-carousel-item>
   </v-carousel>
 </template>
 
@@ -19,7 +18,7 @@ export default {
     ]
 }
 </script>
-
+import Vue from
 <style>
 
 </style>
