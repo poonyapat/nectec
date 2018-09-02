@@ -106,6 +106,8 @@ module.exports = {
                 results.push({ id: archilogicalSiteData[data][index].id, title: archilogicalSiteData[data][index].title, media: archilogicalSiteData[data][index].media })
             }
         }
+        results = results.sort(function(a,b) {return (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0);} );
+
 
         res.send(results)
     },
@@ -121,26 +123,34 @@ module.exports = {
         }
 
         const search = req.query.search
-
-        let searchResults = results.map(result => {
+        console.log(search)
+        let array
+        if (search ||  search == '') {
+            let searchResults = results.map(result => {
                 return result.title.includes(search) ? result.title : ""
-        })
+            })
 
-        let otherResults = results.map(result => {
-            return result.province.includes(search) ? result.province : ""
-        })
+            let otherResults = results.map(result => {
+                return result.province.includes(search) ? result.province : ""
+            })
 
-        searchResults.join(otherResults)
-        let returnResults = []
-        for (let i = 0; i < 10; i++) {
-            if (searchResults[i] != "") {
-                returnResults.push(searchResults[i])
+            searchResults.join(otherResults)
+            let returnResults = []
+            for (let i = 0; i < 10; i++) {
+                if (searchResults[i] != "") {
+                    returnResults.push(searchResults[i])
+                }
+                else {
+                    i--;
+                }
             }
-            else {
-                i--;
-            }
+            array = returnResults
+        } else {
+            array = results
         }
 
-        res.send(returnResults)
+        array.sort(function(a,b) {return (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0);} );
+
+        res.send(array)
     }
 }

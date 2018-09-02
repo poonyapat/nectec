@@ -5,19 +5,14 @@
         </v-toolbar-title>
 
         <v-toolbar-items>
-            <v-btn flat dark>วัดสำคัญในประเทศไทย</v-btn>
-            <v-btn flat dark>สถานที่ทางประวัติศาสตร์</v-btn>
+            <v-btn flat dark :to="{name: 'list'}">สถานที่ทางประวัติศาสตร์</v-btn>
             <v-btn flat dark :to="{name: 'tel'}">เบอร์ฉุกเฉิน</v-btn>
         </v-toolbar-items>
 
-        <v-spacer></v-spacer>
     </v-toolbar>
 </template>
 
 <script>
-export default {
-
-}
 </script>
 
 <style>

@@ -7,7 +7,7 @@
       reverse-transition="fade"
       transition="fade"
       light
-    ><h1>  {{item.title}}</h1></v-carousel-item>
+    ></v-carousel-item>
   </v-carousel>
 </template>
 

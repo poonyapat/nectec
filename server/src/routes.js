@@ -5,8 +5,6 @@ module.exports = (app) => {
 
     app.get('/', PlaceController.index)
 
-    app.get('/content', PlaceController.search)
-
     app.get('/content/:id', PlaceController.get)
 
     app.get('/list', PlaceController.show)
